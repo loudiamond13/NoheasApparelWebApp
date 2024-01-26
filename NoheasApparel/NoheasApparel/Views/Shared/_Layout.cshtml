@@ -1,0 +1,181 @@
+﻿
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    string ActiveNavMenu(string? clicked = "")
+    {
+        string? currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+        return (clicked == currentController) ? "active text-white" : " ";
+
+    }
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]  Nohea's Apparel</title>
+   
+    
+    <link rel="stylesheet" href="~/css/custom.css" />
+    <link rel="stylesheet" href="~/NoheasApparel.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.min.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg text-white  bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Nohea's Apparel</a>
+
+                <button class="navbar-toggler border-0  navbarrr" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarr" aria-controls="navbarr"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="animated-icon1"><span></span><span></span><span></span></div>
+                </button>
+
+                <div id="navbarr" class="navbar-collapse collapse justify-content-between">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-light @ActiveNavMenu("Home")" asp-area="" asp-controller="Home" 
+                                asp-action="Index">Home</a>
+                        </li>
+                       
+                        @* SHOW THE MANAGE PRODUCT AND MANAGE CATEGORY BUTTON ONLY IF THE USER HAS THE ADMIN ROLE *@
+                        @if (User.IsInRole(StaticDetail.Role_Admin))
+                        {
+                            <partial name="_AdminPartial" />
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light @ActiveNavMenu("Product")" asp-area="" asp-controller="Product"
+                                   asp-action="Index">Products</a>
+                            </li>
+                        }
+
+                        @* @await Component.InvokeAsync("ShoppingCartSummary") *@
+                        @if (User.IsInRole(StaticDetail.Role_Admin) || User.IsInRole(StaticDetail.Role_Employee) || User.IsInRole(StaticDetail.Role_User_Customer))
+                        {
+
+                            @if (HttpContextAccessor.HttpContext?.Session.GetInt32(StaticDetail.SessionShopCart) != 0)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-light @ActiveNavMenu("ShoppingCart")" asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index">
+                                        @{
+                                            var count = HttpContextAccessor.HttpContext?.Session.GetInt32(StaticDetail.SessionShopCart);
+                                        }
+                                        <i class="fas fa-shopping-cart"></i> &nbsp;(@count)
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" href="#">
+                                        @{
+                                            var count = HttpContextAccessor.HttpContext.Session.GetInt32(StaticDetail.SessionShopCart);
+                                        }
+                                        <i class="fas fa-shopping-cart"></i> &nbsp;(0)
+                                    </a>
+                                </li>
+                            }
+
+                        }
+                        @if (User.IsInRole(StaticDetail.Role_Employee) || User.IsInRole(StaticDetail.Role_Admin))
+                            {
+                        <li class="nav-item">
+
+                                <a class=" nav-link text-light @ActiveNavMenu("Order")" asp-area="Admin" asp-controller="Order" asp-action="Index">
+                                   Manage Orders
+                                </a>
+                            </li>
+                            }else
+                            {
+                                <li class="nav-item">
+                                <a class=" nav-link text-light @ActiveNavMenu("Order")" asp-area="Admin" asp-controller="Order" asp-action="Index">
+                                     Orders
+                                </a>
+
+                            </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+
+                   
+                   
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        @if (!String.IsNullOrEmpty(TempData["success"]?.ToString()))
+        {
+            <div id="alertMSG" class="text-dark text-center alert alert-success" role="alert">
+                @TempData["success"]
+            </div>
+            
+        }
+        @if (!string.IsNullOrEmpty(TempData["error"]?.ToString()))
+        {
+            <div id="alertMSG" class="text-dark text-center alert alert-danger" role="alert">
+                @TempData["success"]
+            </div>
+        
+        }
+        <main role="main" class="pb-3">
+             @*custom header message
+            @if( !String.IsNullOrEmpty(headerMessage))
+            {
+                <h2 class="text-dark text-center p-2 my-1">@headerMessage.ToUpper()</h2>
+            }
+
+            @* For Positive message or positive/success alert message 
+             @if (!String.IsNullOrEmpty(positiveMessage))
+            {
+                <h2 id="customMessage"
+                    class="alert text-center alert-success bg-gradient p-2 my-1">
+                    @positiveMessage.ToUpper()
+                </h2>
+            } 
+            @* For Negative message or negative alert message 
+             @if (!String.IsNullOrEmpty(negativeMessage))
+            {
+                <h2 id="customMessage"
+                    class="alert text-center alert-danger bg-gradient p-2 my-1">
+                    @negativeMessage
+                </h2>
+            } *@
+            @RenderBody()
+        </main>
+    </div>
+    <br><br>
+    <footer class="border-top footer bg-primary text-muted ">
+        <div class="text-white container  d-flex justify-content-evenly ">
+
+
+            <a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover text-decoration-none text-white" asp-area="" asp-controller="Home"
+                   asp-action="About">About Us!</a>
+          
+            &copy; 2023 - Nohea's Apparel
+        </div>
+    </footer>
+    
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+   
+    @await RenderSectionAsync("Scripts", required: false)
+   
+   
+   
+</body>
+</html>

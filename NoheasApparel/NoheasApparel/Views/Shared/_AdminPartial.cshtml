@@ -1,0 +1,29 @@
+﻿@using NoheasApparel.DataAccess;
+@using Microsoft.AspNetCore.Identity;
+
+@{
+    string ActiveNavMenu(string? clicked = "")
+    {
+        string? currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+        return (clicked == currentController) ? "active text-white" : " ";
+
+    }
+}
+
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class=" nav-link text-light @ActiveNavMenu("Product")" asp-area="Admin" asp-controller="Product" asp-action="Index">
+            Manage Product
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class=" nav-link text-light @ActiveNavMenu("Category")" asp-area="Admin" asp-controller="Category" asp-action="Index">
+            Manage Category
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class=" nav-link text-light @ActiveNavMenu("User")" asp-area="Admin" asp-controller="User" asp-action="Index">
+            Manage Users
+        </a>
+    </li>
+</ul>

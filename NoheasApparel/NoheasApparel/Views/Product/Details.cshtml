@@ -1,0 +1,118 @@
+﻿@model ShoppingCart
+
+<form method="post" asp-action="Details" asp-area="" asp-controller="Product">
+    <input asp-for="ProductID" hidden />
+   
+    <div class="card shadow border-0 mt-4 mb-4">
+        <div class="card-header bg-secondary bg-gradient text-light py-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="text-dark text-uppercase">@Model.Product?.ProductName</h3>
+                    <p class="text-dark-50 fw-semibold mb-0">@Model.Product?.Brand.BrandName</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="py-3">
+                <div class="row">
+                    <div class="col-6 col-md-2 offset-lg-1 pb-1">
+                        <a asp-action="Index" asp-area="" asp-controller="product" class="btn btn-outline-dark bg-gradient mb-5 fw-semibold btn-sm text-uppercase">
+                            <small>Back to products</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-3 offset-lg-1 text-center mb-3">
+                        <img src="@Model.Product.ProductImageURL" asp-append-version="true" width="100%" class="rounded" />
+                    </div>
+                    <div class="col-12 col-lg-6 offset-lg-1">
+
+                        <div class="col-12 col-md-6 pb-4">
+                            <span class="badge bg-secondary">@Model.Product.Category?.CategoryName</span>
+                        </div>
+                        <div class="row">
+                            <h6 class="text-dark text-opacity-75  pb-2">
+                                List Price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="text-decoration-underline">
+                                    @Model.Product.ProductPrice.ToString("c")
+                                </span>
+                            </h6>
+                        </div>
+                        <div class="row">
+                            <h6 class="text-dark text-opacity-50 ">Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Product.Gender?.GenderName </h6>
+                        </div>
+                        <div class="row">
+                            <h6 class="text-dark text-opacity-50 ">Product Color:&nbsp; @Model.Product.ProductColor</h6>
+                        </div>
+                        
+                    
+                        <div class="row my-3">
+                            <p class="text-dark opacity-75 lh-sm">@Html.Raw(Model.Product.ProductDescription)</p>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text bg-primary text-white border-0 fw-semibold"
+                                          id="inputGroup-sizing-default">
+                                        Count
+                                    </span>
+                                    <input asp-for="Count" type="number" value="1" class="form-control fw-medium text-center"
+                                           aria-label="Sizing example input" 
+                                           aria-describedby="inputGroup-sizing-default" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 pb-1">
+                                <button type="submit" 
+                                        class="btn btn-primary bg-gradient  w-100 py-2 text-uppercase fw-semibold">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@* @model DataAccessLibrary.Models.Product
+
+@{
+    ViewData["title"] = "Product Details - ";
+}
+
+<div>
+    <div class="row">
+        @* product image details page 
+        <div class="col-3">
+            <img src="@(Model.ProductImageURL ?? "~/content/images/No_Image_Found.jpg")"
+                alt="@Model.ProductName image" asp-append-version="true" class="w-75 h-75">
+        </div>
+        @*product text details
+        <div class="col-8">
+            <table class="table-striped table-bordered">
+                <tr>
+                    <th class="p-2">List Price:</th>
+                    <td class="p-2">@Model.ProductPrice.ToString("c")</td>
+                </tr>
+
+             
+
+                <tr>
+                    <th class="p-2">Description:</th>
+                    <td class="group-text w-100 p-2">@Model?.ProductDescription</td>
+                </tr>
+
+               
+            </table>
+            <a asp-controller="Product" asp-action="Cart" class=" mt-3 btn btn-primary"
+               asp-route-id="@Model?.productID">Add To Cart</a>
+        </div>
+    </div>
+
+</div> *@

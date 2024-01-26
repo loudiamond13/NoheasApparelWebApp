@@ -1,0 +1,12 @@
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\bin\Debug\net7.0\NoheasAppare.Utility.deps.json
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\bin\Debug\net7.0\NoheasAppare.Utility.dll
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\bin\Debug\net7.0\NoheasAppare.Utility.pdb
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\NoheasAppare.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\NoheasAppare.Utility.AssemblyInfoInputs.cache
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\NoheasAppare.Utility.AssemblyInfo.cs
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\NoheasAppare.Utility.csproj.CoreCompileInputs.cache
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\NoheasAppare.Utility.dll
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\refint\NoheasAppare.Utility.dll
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\NoheasAppare.Utility.pdb
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\ref\NoheasAppare.Utility.dll
+C:\Users\diamo\Desktop\NoheasApparel\NoheasAppare.Utility\obj\Debug\net7.0\NoheasAppare.Utility.csproj.AssemblyReference.cache

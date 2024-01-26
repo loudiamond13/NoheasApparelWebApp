@@ -1,0 +1,357 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel\\NoheasApparel.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\DataAccessLibrary\\NoheasApparel.DataAccessLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\DataAccessLibrary\\NoheasApparel.DataAccessLibrary.csproj",
+        "projectName": "NoheasApparel.DataAccessLibrary",
+        "projectPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\DataAccessLibrary\\NoheasApparel.DataAccessLibrary.csproj",
+        "packagesPath": "C:\\Users\\diamo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\DataAccessLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\diamo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel.Models\\NoheasApparel.Models.csproj": {
+                "projectPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel.Models\\NoheasApparel.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasAppare.Utility\\NoheasApparel.Utility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasAppare.Utility\\NoheasApparel.Utility.csproj",
+        "projectName": "NoheasApparel.Utility",
+        "projectPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasAppare.Utility\\NoheasApparel.Utility.csproj",
+        "packagesPath": "C:\\Users\\diamo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasAppare.Utility\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\diamo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel.Models\\NoheasApparel.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel.Models\\NoheasApparel.Models.csproj",
+        "projectName": "NoheasApparel.Models",
+        "projectPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel.Models\\NoheasApparel.Models.csproj",
+        "packagesPath": "C:\\Users\\diamo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\diamo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel\\NoheasApparel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel\\NoheasApparel.csproj",
+        "projectName": "NoheasApparel",
+        "projectPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel\\NoheasApparel.csproj",
+        "packagesPath": "C:\\Users\\diamo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\diamo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\DataAccessLibrary\\NoheasApparel.DataAccessLibrary.csproj": {
+                "projectPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\DataAccessLibrary\\NoheasApparel.DataAccessLibrary.csproj"
+              },
+              "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasAppare.Utility\\NoheasApparel.Utility.csproj": {
+                "projectPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasAppare.Utility\\NoheasApparel.Utility.csproj"
+              },
+              "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel.Models\\NoheasApparel.Models.csproj": {
+                "projectPath": "C:\\Users\\diamo\\Desktop\\NoheasApparelWebApp\\NoheasApparelWebApp\\NoheasApparel\\NoheasApparel.Models\\NoheasApparel.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AspNetCore.SassCompiler": {
+              "target": "Package",
+              "version": "[1.69.5, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[43.11.0, )"
+            },
+            "bootstrap.sass": {
+              "target": "Package",
+              "version": "[5.3.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

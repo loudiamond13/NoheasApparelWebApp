@@ -1,0 +1,87 @@
+﻿
+
+@{
+    var status = Context.Request.Query["status"];
+
+    var completed = "";
+    var pending = "";
+    var rejected = "";
+    var inprogress = "";
+    var all = "";
+
+    switch (status)
+    {
+        case "Completed":
+            completed = "mt-2 border-dark rounded dark text-decoration-underline fw-bold bg-gradient";
+            break;
+        case "Rejected":
+            rejected = "mt-2  border-dark rounded text-decoration-underline fw-bold bg-gradient";
+            break;
+        case "Inprogress":
+            inprogress = "mt-2  border-dark rounded text-decoration-underline fw-bold bg-gradient";
+            break;
+        case "Pending":
+            pending = "mt-2  border-dark rounded text-decoration-underline fw-bold bg-gradient";
+            break;
+        default:
+            all = "mt-2 text-decoration-underline fw-bold border-dark rounded bg-gradient";
+            break;
+    }
+}
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Orders</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3 d-flex">
+            <div class="col-6">
+            </div>
+            <div class="p-2">
+                <ul class="list-group list-group-horizontal-sm">
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Order"
+                       asp-route-status="Completed">
+                    <li class="list-group-item bg-secondary text-light @completed">Completed</li>
+                    </a>
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Order"
+                       asp-route-status="Pending">
+                    <li class="list-group-item bg-warning text-white @pending">Pending</li>
+                    </a>
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Order"
+                       asp-route-status="Inprogress">
+                    <li class="list-group-item bg-light @inprogress">In Progress</li>
+                    </a>
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Order"
+                       asp-route-status="Rejected">
+                    <li class="list-group-item bg-danger text-light @rejected">Rejected</li>
+                    </a>
+                    <a class="text-decoration-none" asp-action="Index" asp-controller="Order"
+                       asp-route-status="All">
+                    <li class="list-group-item bg-primary text-light @all">All</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+        <table id="dataTBL" class="table table-bordered table-striped" style="width:100%">
+            <thead class="table-secondary">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Amount</th>
+                    <th>Order Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/order.js"></script>
+}

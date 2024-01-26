@@ -1,0 +1,235 @@
+﻿
+@model PagedList<ProductViewModel>
+
+@if (Model.Items.Count() > 0)
+{
+    <div class="d-flex justify-content-evenly">
+        <form asp-action="Index" asp-controller="Product" asp-area="" class="text-center d-flex"
+              asp-route-categoryName="@ViewData["CategoryName"]" asp-route-brandName="@ViewData["BrandName"]" asp-route-genderName="@ViewData["GenderName"]">
+            <div class="dropdown  px-1">
+                <button class="btn btn-secondary form-control dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @(ViewData["BrandName"] == "" ? "All Brands": ViewData["BrandName"])
+                </button>
+                <ul class="dropdown-menu">
+                    @if (ViewData["BrandName"]?.ToString()?.ToLower() != "")
+                    {
+                        <li><button name="BrandName" class="dropdown-item" type="submit" value="">All Brands</button></li>
+                    }
+                    @foreach(var brand in Model.ProductVM.Brands)
+                    {
+                        <li><button name="BrandName"  class="dropdown-item" type="submit" value="@brand.Text">@brand.Text</button></li>
+                    }
+                </ul>
+            </div>
+            <div class="dropdown px-1">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @(ViewData["CategoryName"] == "" ? "All Category" : ViewData["CategoryName"])
+                </button>
+                <ul class="dropdown-menu">
+                    @if (ViewData["CategoryName"]?.ToString()?.ToLower() != "")
+                    {
+                        <li><button name="CategoryName" class="dropdown-item" type="submit" value="">All Category</button></li>
+                    }
+                    @foreach( var category in Model.ProductVM.Categories )
+                    {
+                        <li><button name="CategoryName" class="dropdown-item" type="submit" value="@category.Text">@category.Text</button></li>
+                    }
+
+                </ul>
+            </div>
+            <div class="dropdown px-1">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @(ViewData["GenderName"] == "" ? "Gender" : ViewData["GenderName"])
+                </button>
+                <ul class="dropdown-menu">
+                    @if (ViewData["GenderName"]?.ToString()?.ToLower() != "")
+                    {
+                        <li><button name="GenderName" class="dropdown-item" type="submit" value="">All Gender</button></li>
+                    }
+                    @foreach (var gender in Model.ProductVM.Genders)
+                    {
+                        <li><button name="GenderName" class="dropdown-item" type="submit" value="@gender.Text">@gender.Text</button></li>
+                    }
+
+                </ul>
+            </div>
+        </form>
+        <form class="d-flex  ms-auto" asp-action="Index" asp-controller="Product" asp-area=""
+              asp-route-categoryName="@ViewData["CategoryName"]" asp-route-brandName="@ViewData["BrandName"]" asp-route-genderName="@ViewData["GenderName"]">
+            <input name="searchInput" class=" form-control me-1 " type="search"
+            placeholder="Search" aria-label="Search" value="@ViewData["SearchInput"]" >
+        <button class="btn d-flex gradient btn-dark align-items-center " type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i> <span class="d-none d-lg-block"> Search</span>
+        </button>
+    </form>
+    </div>
+    <div class="row pb-3">
+       
+        
+        
+        @foreach (var product in Model.Items)
+        {
+            <div class="col-lg-3 col-sm-6">
+                <div class="row p-2">
+                    <div class="col-12 pl-1">
+                        
+                        
+                        <div class="card border-secondary border-0 p-3 shadow border-top border-5 rounded">
+                           
+                            <a asp-area="" asp-action="Details" asp-controller="Product" 
+                                asp-route-id="@product.ProductID" class="text-decoration-none text-dark">
+
+                                <p class="card-title  fw-medium">
+                                   @product.Gender @product.Brand @product.Category
+                                </p>
+
+                                @* all images were taken from google images *@
+                                <img src="@(product.ImageURL ?? "~/content/images/No_Image_Available.jpg")"
+                                     asp-append-version="true"
+                                     class="card-img-top rounded" />
+                                <div class="pl-1">
+                                    <p class="fw-bold card-title text-dark opacity-75 text-uppercase text-center">
+                                        @product.ProductName
+                                    </p>
+                                    <p class="card-title opacity-75 text-dark text-truncate">
+                                        @product.ProductDescription
+                                    </p>
+                                    <p class="text-dark fw-medium text-dark text-decoration-underline float-end">
+                                        <span><i class="fa-solid fa-dollar-sign"></i>@product.Price</span>
+                                    </p>
+                                </div>
+                            </a>
+                          
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        }
+        @*Paging*@
+        <div class="row  mt-3">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+                <nav >
+                    <ul class="pagination  justify-content-end">
+                        <li class="page-item  @(Model.HasPrevPage ? "" : "disabled")">
+                            <a class="page-link text-dark" asp-route-pageNum="@(Model.PageIndex - 1)"
+                               asp-route-searchInput="@ViewData["SearchInput"]"
+                               asp-route-brandName="@ViewData["BrandName"]"
+                               asp-route-categoryName="@ViewData["CategoryName"]"
+                               asp-route-genderName="@ViewData["GenderName"]">
+                                <i class="fa-solid fa-angles-left"></i>
+                            </a>
+                        </li>
+                        @for (int i = 1; i <= Model.PageTotalCount; i++)
+                        {
+                            <li class="page-item ">
+                                <a class="page-link  @(Model.PageIndex == i ? "bg-secondary gradient-50" : "") text-dark" 
+                                   asp-route-pageNum="@i"
+                                   asp-route-searchInput="@ViewData["SearchInput"]"
+                                   asp-route-brandName="@ViewData["BrandName"]"
+                                   asp-route-categoryName="@ViewData["CategoryName"]"
+                                   asp-route-genderName="@ViewData["GenderName"]">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                        <li class="page-item  @(Model.HasNextPage ? "" : "disabled")">
+                            <a class="page-link text-dark" asp-route-pageNum="@(Model.PageIndex + 1)"
+                               asp-route-searchInput="@ViewData["SearchInput"]"
+                               asp-route-brandName="@ViewData["BrandName"]"
+                               asp-route-categoryName="@ViewData["CategoryName"]"
+                               asp-route-genderName="@ViewData["GenderName"]">
+                                <i class="fa-solid fa-angles-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    
+
+}else
+{
+    <h3 class="text-center text-dark fw-semibold">No Products.</h3>
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+@using DataAccessLibrary.Models;
+@model List<Product>
+
+@{
+    ViewData["title"] = "Products -";
+  
+}
+
+<div class="row justify-content-center">
+    <div class="col-2 mt-3">
+        <label class="form-label">Mens:</label>
+        <select class="form-select" 
+            asp-items="@(new SelectList(ViewBag.Categories,"CategoryID","CategoryName", ViewBag.Categories.ToString()))">
+
+            <option value="0">All</option>
+        </select>
+
+        <label class="form-label mt-3">Womens:</label>
+        <select class="form-select"
+                asp-items="@(new SelectList(ViewBag.Categories,"CategoryID","CategoryName", ViewBag.Categories.ToString()))">
+
+            <option value="0">All</option>
+        </select>
+    </div>
+
+    <div class="col-10">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach(Product prod in ViewBag.Products)
+            {
+               
+                    @* class="col-sm-4 mt-3 mb-3 mb-sm-0 w-25 h-25 " 
+                 <div class="col-sm-4 mb-3 d-flex align-items-stretch text-dark "  >
+                    <a class="text-decoration-none text-dark" asp-controller="Product" asp-action="Details" asp-route-id="@prod.productID">
+
+                        <div class="card h-100">
+                            <img src="@prod.ProductImageURL" class="img-responsive card-img-top h-75" alt="..." asp-append-version="true">
+                
+              
+                            <div class="card-body">
+                                <h5 class="card-title text-uppercase">@prod.ProductName</h5>
+                                <h3 class="card-text">@prod.Category.CategoryName</h3>
+                                <p class="card-text text-truncate overflow-hidden">@prod.ProductDescription</p>
+                                <p class="">Color: @prod.ProductColor</p>
+                                
+                                <p class="card-text fs-5 text-dark fw-bold text-decoration-     
+                                          underline">@prod.ProductPrice.ToString("c")</p>
+                                <a  class="sticky-bottom bottom-0 btn btn-primary">Add to Cart</a>
+                            </div>
+                        </div>
+                    </a>
+                  </div>
+               
+            }
+        </div>
+    </div>
+</div> *@

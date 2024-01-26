@@ -1,0 +1,120 @@
+﻿@model List<Product>
+
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Product List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Product" asp-action="AddEdit" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i>  Create New Product
+                </a>
+            </div>
+        </div>
+
+        <table id="dataTBL" class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Brand</th>
+                    <th>Gender</th>
+                    <th>Category</th>
+                    <th>Color</th>
+                    <th></th>
+                  
+
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/adminProduct.js"></script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* 
+
+@model IEnumerable<Product>
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Product List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Product" asp-action="AddEdit" asp-area="Admin" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i>  Create New Product
+                </a>
+            </div>
+        </div>
+
+        <table id="myTBL" class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Brand</th>
+                    <th>Gender</th>
+                    <th>Category</th>
+                    <th>Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                DISPLAY ALL PRODUCTS IN TABLE ROW
+                @foreach( var prod in Model)
+                {
+                    <tr>
+                        <td>@prod.ProductName</td>
+                        <td>@prod.ProductPrice</td>
+                        <td>@prod.Brand?.BrandName</td>
+                        <td>@prod.Gender?.GenderName</td>
+                        <td>@prod.Category?.CategoryName</td>
+                        <td>@prod.ProductColor</td>
+
+                        <td>
+                            <a asp-route-id="@prod.ProductID" asp-action="AddEdit" asp-area="Admin" asp-controller="Product">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-area="Admin" asp-controller="Product" onclick="Delete()">
+                                Delete
+                                </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+@* @section Scripts{
+    <script src="~/js/product.js"></script>
+} *@ 

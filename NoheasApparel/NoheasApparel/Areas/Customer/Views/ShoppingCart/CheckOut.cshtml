@@ -1,0 +1,130 @@
+﻿@model ShoppingCartVM
+@using Microsoft.Extensions.Options
+@inject IOptions<NoheasApparel.Utility.StripeSettings> Stripe
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                @*   @(Model.Product?.productID != 0 ? "Update" : "Add") *@
+                <h2 class="text-white py-2">Check Out</h2>
+            </div>
+            <div class="col-6 text-dark">
+                <a class="btn  fw-bold btn-outline-dark btn-md" asp-action="Index" asp-area="Customer" asp-controller="ShoppingCart">
+                    Edit Cart
+                </a>
+            </div>
+        </div>
+    </div>
+    <form method="post" class="row">
+        <input asp-for="OrderHeader.OrderTotal" hidden />
+        <input asp-for="OrderHeader.SubTotal" hidden />
+        <input asp-for="OrderHeader.Tax" hidden/>
+        <div class="card-body p-4">
+           <div class="row">
+                <h3 class="text-dark">Delivery Information</h3>
+           </div>
+           <div class="row">
+            <div class="col-6">
+                <div class=" p-3">
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="OrderHeader.Name" class="form-control border-0 shadow" />
+                        <label asp-for="OrderHeader.Name" class="ms-2"></label>
+                        <span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="OrderHeader.PhoneNumber" class="form-control border-0 shadow" />
+                        <label asp-for="OrderHeader.PhoneNumber" class="ms-2"></label>
+                        <span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="OrderHeader.StreetAddress" class="form-control border-0 shadow" />
+                        <label asp-for="OrderHeader.StreetAddress" class="ms-2">Street Adress</label>
+                        <span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="OrderHeader.City" class="form-control border-0 shadow" />
+                        <label asp-for="OrderHeader.City" class="ms-2"></label>
+                        <span asp-validation-for="OrderHeader.City" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="OrderHeader.State" class="form-control border-0 shadow" />
+                        <label asp-for="OrderHeader.State" class="ms-2"></label>
+                        <span asp-validation-for="OrderHeader.State" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating py-2 col-12">
+                        <input asp-for="OrderHeader.PostalCode" class="form-control border-0 shadow" />
+                        <label asp-for="OrderHeader.PostalCode" class="ms-2"></label>
+                        <span asp-validation-for="OrderHeader.PostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                    <h3 class="text-dark align-items-center">Order Summary</h3>
+                    <ul class="list-group mb-3">
+                      @foreach(var item in Model.ShoppingCarts)
+                        {
+                            <li class="list-group-item d-flex justify-content-between">
+                                <div>
+                                    <div class="fs-6 my-0">@item.Product.ProductName</div>
+                                    <p class="text-muted">Quantity: @item.Count</p>
+                                    <p class="text-muted">Price: @item.Product.ProductPrice</p>
+                                </div>
+                                <span class="text-muted">$@(item.Product.ProductPrice * item.Count)</span>
+                            </li>
+                          
+                        }
+                        <li class="list-group-item d-flex justify-content-between bg-light">
+                            <p class="text-dark">SubTotal:</p>
+                            <p class="fw-bold text-dark">@Model.OrderHeader.SubTotal.ToString("c")</p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between bg-light">
+                            <p class="text-dark">Estimated Tax(10%):</p>
+                            <p class="fw-bold text-dark">@Model.OrderHeader.Tax.ToString("c")</p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between bg-light">
+                            <p class="text-dark">Total(USD):</p>
+                            <p class="fw-bold text-dark">@Model.OrderHeader.OrderTotal.ToString("c")</p>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between ">
+                            <p class="text-dark">Estimated Arrival Date:</p>
+                            <br>
+                            <p>@Model.OrderHeader.OrderDate.AddDays(5).ToShortDateString() - @Model.OrderHeader.OrderDate.AddDays(10).ToShortDateString()</p>
+                        </li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 pr-4">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between">
+                                    @{
+                                        var TotalWithTax = Model.OrderHeader.OrderTotal * 100;
+                                    }
+                                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                            data-amount="@TotalWithTax"
+                                            data-key="@Stripe.Value.PublishableKey"
+                                            data-name="Noheas Apparel"
+                                            data-label="Order Now"
+                                            data-locale="auto"
+                                            data-allow-remember-me="false">
+                                    </script>
+                                    <script>
+                                        document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+                                    </script>
+                                    <button class="btn btn-success form-control stripe-button" value="Place Order" type="submit">
+                                        Place Order
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+            </div>
+           </div>
+            
+        </div>
+    </form>
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
